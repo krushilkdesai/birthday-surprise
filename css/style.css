@@ -1,0 +1,985 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIRTHDAY SURPRISE — Main Stylesheet
+   Theme: Soft gradients, glassmorphism, warm friendship vibes
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── CSS Variables (override via config.js colors) ─────────── */
+:root {
+  --color-primary: #ff6b9d;
+  --color-secondary: #c084fc;
+  --color-accent: #fbbf24;
+  --color-dark: #1a1a2e;
+  --color-light: #fef3f8;
+  --color-glass: rgba(255, 255, 255, 0.12);
+  --color-glass-border: rgba(255, 255, 255, 0.25);
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Poppins", system-ui, sans-serif;
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 40px rgba(255, 107, 157, 0.35);
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --navbar-height: 72px;
+}
+
+/* ── Reset & Base ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background: linear-gradient(135deg, #fef3f8 0%, #ede9fe 40%, #fce7f3 70%, #fff7ed 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Reduced Motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .floating-heart,
+  .floating-star,
+  .particle,
+  .balloon,
+  .sparkle {
+    display: none !important;
+  }
+}
+
+/* ── Navbar ──────────────────────────────────────────────────── */
+.navbar-custom {
+  background: rgba(26, 26, 46, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 0;
+  transition: var(--transition-smooth);
+}
+
+.navbar-custom .navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-custom .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: 50px;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+  color: #fff !important;
+  background: rgba(255, 107, 157, 0.25);
+}
+
+.navbar-custom .nav-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* ── Page Layout ─────────────────────────────────────────────── */
+.page-wrapper {
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+}
+
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+/* ── Hero Sections ───────────────────────────────────────────── */
+.hero-fullscreen {
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: rgba(26, 26, 46, 0.75);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.hero-footnote {
+  font-size: 0.95rem;
+  color: rgba(26, 26, 46, 0.55);
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* ── Glass Card ──────────────────────────────────────────────── */
+.glass-card {
+  background: var(--color-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+@media (min-width: 768px) {
+  .glass-card {
+    padding: 3rem;
+  }
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn-surprise {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 20px rgba(255, 107, 157, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-surprise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.btn-surprise:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-glow);
+  color: #fff;
+}
+
+.btn-surprise:hover::before {
+  opacity: 1;
+}
+
+.btn-surprise span,
+.btn-surprise i {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-surprise:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.btn-surprise.btn-lg {
+  padding: 1.15rem 3rem;
+  font-size: 1.25rem;
+}
+
+.btn-outline-surprise {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: none;
+}
+
+.btn-outline-surprise::before {
+  display: none;
+}
+
+.btn-outline-surprise:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-music {
+  background: linear-gradient(135deg, var(--color-accent), #f97316);
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4);
+}
+
+/* ── Scroll Indicator ────────────────────────────────────────── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(26, 26, 46, 0.5);
+  font-size: 0.85rem;
+  animation: bounce 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+.scroll-indicator i {
+  font-size: 1.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Section Headings ────────────────────────────────────────── */
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--color-dark), var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: rgba(26, 26, 46, 0.65);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+/* ── Memory Cards ────────────────────────────────────────────── */
+.memory-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  height: 100%;
+}
+
+.memory-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow);
+}
+
+.memory-card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.memory-card .card-img-wrapper {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: rgba(26, 26, 46, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-card .card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.memory-card:hover .card-img-top {
+  transform: scale(1.03);
+}
+
+.memory-card .card-date {
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.memory-card .card-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.memory-card .card-text {
+  font-size: 0.9rem;
+  color: rgba(26, 26, 46, 0.65);
+}
+
+/* ── Modal ───────────────────────────────────────────────────── */
+.modal-content {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.modal-memory-img {
+  width: 100%;
+  max-height: min(70vh, 620px);
+  object-fit: contain;
+  object-position: center;
+  background: rgba(26, 26, 46, 0.04);
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.4s ease-out;
+  transform: scale(0.9) translateY(20px);
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+/* ── Message Cards (Page 3) ──────────────────────────────────── */
+.message-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-smooth);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.message-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+.message-card.revealed:hover {
+  transform: translateY(-4px);
+}
+
+.message-card p {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.gratitude-banner {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #fff;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  box-shadow: var(--shadow-glow);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.6s ease;
+}
+
+.gratitude-banner.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gratitude-banner p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ── Birthday Cake (CSS) ───────────────────────────────────────── */
+.cake-container {
+  position: relative;
+  width: 200px;
+  height: 220px;
+  margin: 2rem auto;
+}
+
+.cake-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 80px;
+  background: linear-gradient(180deg, #f472b6, #ec4899);
+  border-radius: 10px 10px 20px 20px;
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cake-base::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 10px;
+  width: 160px;
+  height: 40px;
+  background: linear-gradient(180deg, #fbcfe8, #f9a8d4);
+  border-radius: 10px;
+}
+
+.cake-base::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 25px;
+  width: 130px;
+  height: 30px;
+  background: linear-gradient(180deg, #fff, #fce7f3);
+  border-radius: 8px;
+}
+
+.candle {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 40px;
+  background: linear-gradient(180deg, #fbbf24, #f59e0b);
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.candle-flame {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 22px;
+  background: radial-gradient(ellipse, #fbbf24 0%, #f97316 60%, transparent 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker 0.8s ease-in-out infinite alternate;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.candle-flame.blown-out {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+  100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+}
+
+/* ── Countdown ───────────────────────────────────────────────── */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+@media (min-width: 480px) {
+  .countdown-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.countdown-item {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.countdown-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(26, 26, 46, 0.55);
+  margin-top: 0.35rem;
+}
+
+.countdown-celebration {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  color: var(--color-primary);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ── Meeting Form ────────────────────────────────────────────── */
+.meeting-form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.meeting-form .form-control,
+.meeting-form .form-select {
+  border-radius: 12px;
+  border: 2px solid rgba(255, 107, 157, 0.2);
+  padding: 0.75rem 1rem;
+  transition: var(--transition-smooth);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.meeting-form .form-control:focus,
+.meeting-form .form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+}
+
+.meeting-form .form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.confirmation-card {
+  display: none;
+  text-align: center;
+  animation: scaleIn 0.6s ease forwards;
+}
+
+.confirmation-card.visible {
+  display: block;
+}
+
+.confirmation-card h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.confirmation-card .confirm-message {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.confirmation-card .wait-text {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-secondary);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 1s forwards;
+}
+
+/* ── Joke Reveal ─────────────────────────────────────────────── */
+.joke-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.joke-section.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.joke-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  transform: rotateY(90deg);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.joke-card.revealed {
+  transform: rotateY(0);
+  opacity: 1;
+}
+
+.joke-card p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.8;
+  white-space: pre-line;
+  margin-bottom: 0;
+}
+
+.final-section {
+  display: none;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.final-section.visible {
+  display: block;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.final-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+
+.final-message {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: rgba(26, 26, 46, 0.75);
+  line-height: 1.8;
+}
+
+.final-footnote {
+  font-style: italic;
+  color: rgba(26, 26, 46, 0.55);
+  margin-top: 1.5rem;
+}
+
+/* ── Floating Particles ──────────────────────────────────────── */
+.particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-heart,
+.floating-star {
+  position: absolute;
+  opacity: 0.6;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-heart {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.floating-star {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-30px) rotate(15deg);
+    opacity: 0.8;
+  }
+}
+
+/* ── Confetti Canvas ───────────────────────────────────────────── */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Balloons ──────────────────────────────────────────────────── */
+.balloon-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 50px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: rise 4s ease-in forwards;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  width: 1px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(10deg);
+    opacity: 0.6;
+  }
+}
+
+/* ── Sparkles ──────────────────────────────────────────────────── */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Animations ────────────────────────────────────────────────── */
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.6s ease forwards;
+}
+
+.slide-left {
+  animation: slideLeft 0.8s ease forwards;
+}
+
+.slide-right {
+  animation: slideRight 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Page Transition Overlay ───────────────────────────────────── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.page-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page-transition i {
+  font-size: 3rem;
+  color: #fff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Utility ───────────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sr-only-custom {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ── Music Controls ────────────────────────────────────────────── */
+.music-controls {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.music-controls .btn-surprise {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* ── Responsive Tweaks ─────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .glass-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .btn-surprise {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-fullscreen {
+    min-height: calc(100dvh - var(--navbar-height));
+  }
+}

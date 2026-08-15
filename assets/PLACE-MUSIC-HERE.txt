@@ -1,0 +1,11 @@
+# Birthday Music Placeholder
+
+Replace this file with your own MP3:
+
+  assets/birthday-music.mp3
+
+Recommended: a short, cheerful birthday song or your bestie's favorite track.
+
+The music player will NOT autoplay — users must click "Play Music" to start.
+
+To use a different filename, update `musicPath` in js/config.js.
