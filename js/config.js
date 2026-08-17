@@ -19,7 +19,7 @@ const birthdayConfig = {
     "પાણીપૂરી બોવ ભાવે છે મને અને એમા તુ સુખી પૂરી કે જે છેલ્લે સુધી હોય ....\n\nI hope this new year of your life brings you lots of happiness, exciting opportunities, unforgettable memories, and all the things you've been wishing for. Thank you for all the laughs, random conversations, crazy moments, and memories we've made. Here's to making many more! Stay happy, stay crazy, and most importantly, stay you. ✨💛",
 
   meetingJoke:
-    "You thought you were just choosing a meeting date...\n\nBut congratulations...\n\nYou just gave me an excuse to meet you. 😂",
+    "You thought you were just choosing a meeting date...\n\nBut congratulations...\n\nYou just gave me an excuse to meet you. 😂 \n\n તને શું લાગે હું મલીશ એમ !!  તો મેં  નહી મીલુંગા",
 
   // ── Friendship Messages (Page 3) ────────────────────────────
   friendshipMessages: [
