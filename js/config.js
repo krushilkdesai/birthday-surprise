@@ -7,7 +7,7 @@
 
 const birthdayConfig = {
   // ── Basic Info ──────────────────────────────────────────────
-  name: "BESTIE", // Your best friend's name
+  name: "Khushu", // Your best friend's name
   logoText: "✨ K", // Navbar logo text (try "Bestie.exe" too!)
   birthday: "2026-08-18", // YYYY-MM-DD format for countdown
 
@@ -16,7 +16,7 @@ const birthdayConfig = {
   welcomeFootnote: "Before you ask... yes, I actually spent time making this 😂",
 
   finalMessage:
-    "I hope this new year of your life brings you lots of happiness, exciting opportunities, unforgettable memories, and all the things you've been wishing for. Thank you for all the laughs, random conversations, crazy moments, and memories we've made. Here's to making many more! Stay happy, stay crazy, and most importantly, stay you. ✨💛",
+    "પાણીપૂરી બોવ ભાવે છે મને અને એમા તુ સુખી પૂરી કે જે છેલ્લે સુધી હોય ....\n\nI hope this new year of your life brings you lots of happiness, exciting opportunities, unforgettable memories, and all the things you've been wishing for. Thank you for all the laughs, random conversations, crazy moments, and memories we've made. Here's to making many more! Stay happy, stay crazy, and most importantly, stay you. ✨💛",
 
   meetingJoke:
     "You thought you were just choosing a meeting date...\n\nBut congratulations...\n\nYou just gave me an excuse to meet you. 😂",
